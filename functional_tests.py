@@ -14,9 +14,10 @@ class NewVisitorTest(unittest.TestCase):
         self.browser.get('http://localhost:8000')
 
         # She sees to do lists in the title
-        assert 'To-do' in self.browser.title
+        assert 'To-Do' in self.browser.title
 
         # She is invited to add a to do right away
+        self.fail('Finish the test!')
 
         # She types 'buy peacock feathers' in the text box
 
