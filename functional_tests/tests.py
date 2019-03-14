@@ -20,6 +20,7 @@ class NewVisitorTest(LiveServerTestCase):
                 table = self.browser.find_element_by_id('id_list_table')
                 rows = table.find_elements_by_tag_name('tr')
                 self.assertIn(row_text, [row.text for row in rows])
+                return
             except (AssertionError, WebDriverException) as e:
                 if time.time() - start_time > MAX_WAIT:
                     raise e
@@ -47,6 +48,7 @@ class NewVisitorTest(LiveServerTestCase):
 
         # When she hits enter is adds the to do item to the todo list
         inputbox.send_keys(Keys.ENTER)
+        self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
         # She adds another to do item
         inputbox = self.browser.find_element_by_id('id_new_item')
@@ -56,7 +58,6 @@ class NewVisitorTest(LiveServerTestCase):
         # The page updates again and shows both items 
         self.wait_for_row_in_list_table('2: Use peacock feathers to make fly')
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
-
 
         # She wonders whether the site will remember her list and
         # sees it has generated a unique url for her
