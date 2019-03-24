@@ -59,7 +59,6 @@ class NewVisitorTest(LiveServerTestCase):
         self.wait_for_row_in_list_table('2: Use peacock feathers to make fly')
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
-
         # She wonders whether the site will remember her list and
         # sees it has generated a unique url for her
 
